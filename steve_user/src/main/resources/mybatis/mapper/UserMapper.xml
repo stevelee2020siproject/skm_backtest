@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="usermapper">
+ 
+ 	<select id="useralllist" resultType="map">
+ 		SELECT * FROM usr_user;
+ 	</select>
+ 	
+ 	<select id="userIdSelect" resultType="map">
+ 		/*userIdSelect*/
+ 		SELECT * FROM usr_user
+ 		WHERE mail_id = #{mail_id};
+ 	</select>
+ 	
+ 	<select id="userselectoneGet" resultType="map">
+ 		/*userselectonePost*/
+ 		select * from usr_user
+ 		where mail_id = #{mail_id}
+ 	</select>
+ 	
+ 	<select id="userselecttoonegetjson" resultType="map">
+ 		/*userselectonePost*/
+ 		select pw from usr_user
+ 		where mail_id = #{mail_id}
+ 	</select>
+ 	
+ 	<select id="userselectonePost" resultType="map">
+ 		/*userselectonePost*/
+ 		select * from usr_user
+ 		where mail_id = #{posttext}
+ 	</select>
+ 	
+ 	<select id="idpwSelect" resultType="map">
+ 		/*idpwSelect */
+ 		SELECT * FROM usr_user
+ 		WHERE 1=1
+ 		AND mail_id = #{mail_id}
+ 		<if test="pw != null">
+ 			AND pw = #{pw};
+ 		</if> 
+ 	</select>
+ 	
+ 	<select id="idCheck" resultType="map">
+ 		/*id 유무 확인*/
+ 		SELECT * FROM usr_user
+ 		WHERE mail_id = #{mail_id}
+ 	</select>
+ 	
+ 	<select id="getUserCount" resultType="integer">
+ 		/*id 유무 확인*/
+ 		SELECT count(*) FROM usr_user
+ 		WHERE mail_id = #{mail_id}
+ 		and pw = #{pw}
+ 	</select>
+ 	
+ 	<select id="getUser" resultType="map">
+ 		/*id 유무 확인*/
+ 		SELECT * FROM usr_user
+ 		WHERE mail_id = #{mail_id}
+ 		and pw = #{pw}
+ 	</select>
+ 	
+ </mapper>
